@@ -21,8 +21,12 @@ public class KafkaMessagePublisher {
          * We need to first create a topic from command prompt or we can have some portal where the topic is automatically get created
          * then we can give the name here.
          */
-        CompletableFuture<SendResult<String,Object>> future = template.send(topic, message);
-//        CompletableFuture<SendResult<String,Object>> future = template.send("programmatically_created_topic2", message);
+//        CompletableFuture<SendResult<String,Object>> future = template.send(topic, message);
+
+        /**
+         * This topic is being creted from KafkaProducerConfig
+         */
+        CompletableFuture<SendResult<String,Object>> future = template.send("testing_prducer_config", message);
         future.whenComplete((result,ex)->{
             if(ex==null) {
                 System.out.println("Sent message=[" + message + " to parition : "+ result.getRecordMetadata().partition() + "] with offset=[" + result.getRecordMetadata().offset() + "]");

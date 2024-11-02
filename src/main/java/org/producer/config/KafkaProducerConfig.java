@@ -14,6 +14,6 @@ public class KafkaProducerConfig {
 
     @Bean
     public NewTopic createTopic(){
-        return new NewTopic("programmatically_created_topic2",3,(short)1);
+        return new NewTopic("testing_prducer_config",3,(short)1);
     }
 }
